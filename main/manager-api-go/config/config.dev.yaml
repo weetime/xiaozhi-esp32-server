@@ -1,0 +1,35 @@
+app:
+  name: nova
+  id: nova
+  version: v1.0
+  env: dev
+  log_level: -1
+server:
+  http:
+    addr: 0.0.0.0:8000
+    timeout: 10s
+  grpc:
+    addr: 0.0.0.0:9000
+    timeout: 10s
+data:
+  database:
+    driver: postgres
+    source: host=1.92.198.206 port=5431 user=nova dbname=nova_rise password=NovaPwd123 sslmode=disable
+    debug: false
+    # driver: mysql
+    # source: auc:aucpwd001@tcp(t71lay1z0ep40-mi.aliyun-cn-hangzhou-internet.oceanbase.cloud:3306)/auc?charset=utf8mb4&parseTime=True&loc=Local 
+    # debug: false
+  redis:
+    addr: 127.0.0.1:6379
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+trace:
+  disable: false
+  batcher: otlpgrpc
+  endpoint: "192.168.10.100:32157"
+sentry:
+  dsn: ""
+prometheus:
+  address: http://10.100.121.67:30190
+  auth: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InlqNmNsaG42b3IwU2RGZFZ6LTlxZnNxdGg5aWdVR0pZaXcyTFg0b3NVS3MifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTc1MjgxOTA0MCwiaWF0IjoxNzIxMjgzMDQwLCJpc3MiOiJodHRwczovL2t1YmVybmV0ZXMuZGVmYXVsdC5zdmMiLCJrdWJlcm5ldGVzLmlvIjp7Im5hbWVzcGFjZSI6Imx1Y2siLCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoidmdwdSIsInVpZCI6IjU0ZjMzYmUwLTNjMjAtNDAwNC05YThmLTEzOWYzZTcwZjJmYyJ9fSwibmJmIjoxNzIxMjgzMDQwLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6bHVjazp2Z3B1In0.wU9WO7IMihuWJeF4bNVCkiDyPQRvY9AElDpd8Z_aKqi-Epx80LzD1h9I6aABjIyJhp7rPuZueLNgQ7WtRaU1XVLH48UwcTchTCE7MUxViYrUz240I0ObMXiLakni--8otCKjb-3iJqoAoq4lyFoakITzhgZ_jJEPx352J5eMLFEWMSP-VHeHITLxZFLMzuVKWCCSXgNU8UFqjwnBbTE7n3Unw75WGd2lI8JjP--9kDDzQUMOodFWZToJVjpzK2-UyqyPJL8TXur4L8H3Y7-e4UfVrolgEVqxVe6M5vTgR7pKzX4s7JGd9W-HfSk6D1FP5uawx2GWWOcK_lFysbEs8xoT-ykrTQWgvEHQxOyl4Co0Agwplt0OWtyo_G7Pvr7G1EREfY7XErYVVl-DWguFLxEc-oz18ZI-w7DjBW2s35zN5C7dyn8gBO4z7qhjMHOSgdvLN6saZxnCmM2a7DVOGBQkyjzaGWLaQttoGcUPxJFmFZNSTr9v0ZM2tbVJBwc2rW-RTYscvl6I0cjkMY1AHtjVXxM2Jj4nrpuSTao2WvgtdkWGmYNv9vwIq8ATE1_9dJ7BNi-rLWC2ohu87e5FpFiB2Df9Xj5nGnJqTLa1ZrPv59w1NfMXOfPUoxiICl2SoW0WK3DdQAGyo9XDnTh8jgNj71uYhHms99M_aFzMu8E
+  timeout: 1m
