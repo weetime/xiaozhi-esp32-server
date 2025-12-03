@@ -1,0 +1,3 @@
+[submodule "main/AgentMatrix"]
+	path = main/AgentMatrix
+	url = https://github.com/weetime/AgentMatrix
