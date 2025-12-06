@@ -128,10 +128,11 @@ export default {
       this.isLoading = true;
       Api.agent.getAgentList(({ data }) => {
         if (data?.data) {
-          this.originalDevices = data.data.map(item => ({
+          const {list} = data.data;
+          this.originalDevices = list.map(item => ({
             ...item,
             agentId: item.id
-          }));
+          }));  
 
           // 动态设置骨架屏数量（可选）
           this.skeletonCount = Math.min(

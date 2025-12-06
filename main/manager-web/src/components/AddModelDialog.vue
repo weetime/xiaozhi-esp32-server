@@ -158,7 +158,8 @@ export default {
         return
 
       Api.model.getModelProviders(this.modelType, (data) => {
-        this.providers = data.map(item => ({
+        const {list} = data;
+        this.providers = list.map(item => ({
           label: item.name,
           value: item.providerCode,
           fields: JSON.parse(item.fields || '[]').map(f => ({

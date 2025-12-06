@@ -1,4 +1,4 @@
-import { getServiceUrl } from '../api';
+import { getServiceUrl, getManagerServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 export default {
@@ -12,7 +12,7 @@ export default {
     }).toString();
 
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/list?${queryParams}`)
+      .url(`${getManagerServiceUrl()}/models/list?${queryParams}`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime()
@@ -28,7 +28,7 @@ export default {
   // 获取模型供应器列表
   getModelProviders(modelType, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/${modelType}/provideTypes`)
+      .url(`${getManagerServiceUrl()}/models/${modelType}/provideTypes`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime()
@@ -59,7 +59,7 @@ export default {
     };
 
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/${modelType}/${provideCode}`)
+      .url(`${getManagerServiceUrl()}/models/${modelType}/${provideCode}`)
       .method('POST')
       .data(postData)
       .success((res) => {
@@ -77,7 +77,7 @@ export default {
   // 删除模型配置
   deleteModel(id, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/${id}`)
+      .url(`${getManagerServiceUrl()}/models/${id}`)
       .method('DELETE')
       .success((res) => {
         RequestService.clearRequestTime()
@@ -94,7 +94,7 @@ export default {
   // 获取模型名称列表
   getModelNames(modelType, modelName, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/names`)
+      .url(`${getManagerServiceUrl()}/models/names`)
       .method('GET')
       .data({ modelType, modelName })
       .success((res) => {
@@ -110,7 +110,7 @@ export default {
   // 获取LLM模型名称列表
   getLlmModelCodeList(modelName, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/llm/names`)
+      .url(`${getManagerServiceUrl()}/models/llm/names`)
       .method('GET')
       .data({ modelName })
       .success((res) => {
@@ -129,7 +129,7 @@ export default {
       voiceName: voiceName || ''
     }).toString();
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/${modelId}/voices?${queryParams}`)
+      .url(`${getManagerServiceUrl()}/models/${modelId}/voices?${queryParams}`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime();
@@ -144,7 +144,7 @@ export default {
   // 获取单个模型配置
   getModelConfig(id, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/${id}`)
+      .url(`${getManagerServiceUrl()}/models/${id}`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime()
@@ -161,7 +161,7 @@ export default {
   // 启用/禁用模型状态
   updateModelStatus(id, status, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/enable/${id}/${status}`)
+      .url(`${getManagerServiceUrl()}/models/enable/${id}/${status}`)
       .method('PUT')
       .success((res) => {
         RequestService.clearRequestTime()
@@ -183,7 +183,7 @@ export default {
       configJson: formData.configJson
     };
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/${modelType}/${provideCode}/${id}`)
+      .url(`${getManagerServiceUrl()}/models/${modelType}/${provideCode}/${id}`)
       .method('PUT')
       .data(payload)
       .success((res) => {
@@ -201,7 +201,7 @@ export default {
   // 设置默认模型
   setDefaultModel(id, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/default/${id}`)
+      .url(`${getManagerServiceUrl()}/models/default/${id}`)
       .method('PUT')
       .success((res) => {
         RequestService.clearRequestTime()
@@ -230,7 +230,7 @@ export default {
     if (params.limit !== undefined) queryParams.append('limit', params.limit);
 
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/provider?${queryParams.toString()}`)
+      .url(`${getManagerServiceUrl()}/models/provider?${queryParams.toString()}`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime();
@@ -259,7 +259,7 @@ export default {
     };
 
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/provider`)
+      .url(`${getManagerServiceUrl()}/models/provider`)
       .method('POST')
       .data(postData)
       .success((res) => {
@@ -291,7 +291,7 @@ export default {
     };
 
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/provider`)
+      .url(`${getManagerServiceUrl()}/models/provider`)
       .method('PUT')
       .data(putData)
       .success((res) => {
@@ -308,7 +308,7 @@ export default {
   // 删除
   deleteModelProviderByIds(ids, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/provider/delete`)
+      .url(`${getManagerServiceUrl()}/models/provider/delete`)
       .method('POST')
       .data(ids)
       .success((res) => {
@@ -325,7 +325,7 @@ export default {
   // 获取插件列表
   getPluginFunctionList(params, callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/models/provider/plugin/names`)
+      .url(`${getManagerServiceUrl()}/models/provider/plugin/names`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime()

@@ -201,7 +201,7 @@ export default {
     async getFirmwareTypes() {
       try {
         const res = await Api.dict.getDictDataByType('FIRMWARE_TYPE')
-        this.firmwareTypes = res.data
+        this.firmwareTypes = res.data.list
       } catch (error) {
         console.error(this.$t('device.getFirmwareTypeFailed') + ':', error)
         this.$message.error(error.message || this.$t('device.getFirmwareTypeFailed'))
@@ -351,7 +351,8 @@ export default {
       Api.device.getAgentBindDevices(agentId, ({ data }) => {
         this.loading = false;
         if (data.code === 0) {
-          this.deviceList = data.data.map(device => {
+          const {list} = data.data;
+          this.deviceList = list.map(device => {
             return {
               device_id: device.id,
               model: device.board,

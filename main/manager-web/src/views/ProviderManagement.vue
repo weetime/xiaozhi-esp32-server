@@ -234,14 +234,17 @@ export default {
         ({ data }) => {
           this.loading = false;
           if (data.code === 0) {
-            this.providersList = data.data.list.map(item => {
+            const {list, total} = data.data;
+            // todo for debug
+            console.log('this is list, total', list, total);
+            this.providersList = list.map(item => {
               return {
                 ...item,
                 selected: false,
                 fields: JSON.parse(item.fields)
               };
             });
-            this.total = data.data.total;
+            this.total = total;
           } else {
             this.$message.error({
               message: data.msg || '获取参数列表失败'

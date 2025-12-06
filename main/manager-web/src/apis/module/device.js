@@ -1,11 +1,11 @@
-import { getServiceUrl } from '../api';
+import { getServiceUrl, getManagerServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 export default {
     // 已绑设备
     getAgentBindDevices(agentId, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/device/bind/${agentId}`)
+            .url(`${getManagerServiceUrl()}/device/bind/${agentId}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -21,7 +21,7 @@ export default {
     // 解绑设备
     unbindDevice(device_id, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/device/unbind`)
+            .url(`${getManagerServiceUrl()}/device/unbind`)
             .method('POST')
             .data({ deviceId: device_id })
             .success((res) => {
@@ -38,7 +38,7 @@ export default {
     // 绑定设备
     bindDevice(agentId, deviceCode, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/device/bind/${agentId}/${deviceCode}`)
+            .url(`${getManagerServiceUrl()}/device/bind/${agentId}/${deviceCode}`)
             .method('POST')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -53,7 +53,7 @@ export default {
     },
     updateDeviceInfo(id, payload, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/device/update/${id}`)
+            .url(`${getManagerServiceUrl()}/device/update/${id}`)
             .method('PUT')
             .data(payload)
             .success((res) => {
@@ -71,7 +71,7 @@ export default {
     // 手动添加设备
     manualAddDevice(params, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/device/manual-add`)
+            .url(`${getManagerServiceUrl()}/device/manual-add`)
             .method('POST')
             .data(params)
             .success((res) => {
@@ -88,7 +88,7 @@ export default {
     // 获取设备状态
     getDeviceStatus(agentId, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/device/bind/${agentId}`)
+            .url(`${getManagerServiceUrl()}/device/bind/${agentId}`)
             .method('POST')
             .data({}) // 发送空对象作为请求体
             .success((res) => {

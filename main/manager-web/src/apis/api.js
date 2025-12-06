@@ -19,6 +19,7 @@ import knowledgeBase from './module/knowledgeBase.js'
  * 编译时自动读取使用.env.production文件
  */
 const DEV_API_SERVICE = process.env.VUE_APP_API_BASE_URL
+const VUE_APP_MANAGER_API_URL = process.env.VUE_APP_MANAGER_API_URL
 
 /**
  * 根据开发环境返回接口url
@@ -26,6 +27,10 @@ const DEV_API_SERVICE = process.env.VUE_APP_API_BASE_URL
  */
 export function getServiceUrl() {
     return DEV_API_SERVICE
+}
+
+export function getManagerServiceUrl() {
+    return VUE_APP_MANAGER_API_URL
 }
 
 /** request服务封装 */

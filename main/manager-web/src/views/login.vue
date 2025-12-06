@@ -226,9 +226,10 @@ export default {
         this.captchaUuid = getUUID();
 
         Api.user.getCaptcha(this.captchaUuid, (res) => {
-          if (res.status === 200) {
-            const blob = new Blob([res.data], { type: res.data.type });
-            this.captchaUrl = URL.createObjectURL(blob);
+          if (res?.data?.code === 0) {
+            // const blob = new Blob([res.data], { type: res.data.type });
+            // this.captchaUrl = URL.createObjectURL(blob);
+            this.captchaUrl = res.data.data.base64Image;
           } else {
             showDanger("验证码加载失败，点击刷新");
           }
@@ -322,6 +323,7 @@ export default {
         loginData,
         ({ data }) => {
           showSuccess(this.$t('login.loginSuccess'));
+          console.log('this is data', data);
           this.$store.commit("setToken", JSON.stringify(data.data));
           goToPage("/home");
         },

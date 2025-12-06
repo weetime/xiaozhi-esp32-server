@@ -303,12 +303,13 @@ export default {
       if (this.providersLoaded) return;
 
       Api.model.getModelProviders(this.modelType, (data) => {
-        this.providers = data.map((item) => ({
+        const {list} = data;
+        this.providers = list.map((item) => ({
           label: item.name,
           value: String(item.providerCode),
         }));
         this.providersLoaded = true;
-        this.allProvidersData = data;
+        this.allProvidersData = list;
 
         if (this.pendingProviderType) {
           this.loadProviderFields(this.pendingProviderType);

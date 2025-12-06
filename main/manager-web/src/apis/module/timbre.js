@@ -1,4 +1,4 @@
-import { getServiceUrl } from '../api';
+import { getServiceUrl, getManagerServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 export default {
@@ -12,7 +12,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/ttsVoice?${queryParams}`)
+            .url(`${getManagerServiceUrl()}/ttsVoice?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -28,7 +28,7 @@ export default {
     // 音色保存
     saveVoice(params, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/ttsVoice`)
+            .url(`${getManagerServiceUrl()}/ttsVoice`)
             .method('POST')
             .data(JSON.stringify({
                 languages: params.languageType,
@@ -54,7 +54,7 @@ export default {
     // 音色删除
     deleteVoice(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/ttsVoice/delete`)
+            .url(`${getManagerServiceUrl()}/ttsVoice/delete`)
             .method('POST')
             .data(ids)
             .success((res) => {
@@ -71,7 +71,7 @@ export default {
     // 音色修改
     updateVoice(params, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/ttsVoice/${params.id}`)
+            .url(`${getManagerServiceUrl()}/ttsVoice/${params.id}`)
             .method('PUT')
             .data(JSON.stringify({
                 languages: params.languageType,

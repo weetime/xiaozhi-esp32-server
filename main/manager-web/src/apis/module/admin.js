@@ -1,4 +1,4 @@
-import { getServiceUrl } from '../api';
+import { getServiceUrl, getManagerServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 
@@ -66,7 +66,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/params/page?${queryParams}`)
+            .url(`${getManagerServiceUrl()}/admin/params/page?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -82,7 +82,7 @@ export default {
     // 保存
     addParam(data, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/params`)
+            .url(`${getManagerServiceUrl()}/admin/params`)
             .method('POST')
             .data(data)
             .success((res) => {
@@ -99,7 +99,7 @@ export default {
     // 修改
     updateParam(data, callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/params`)
+            .url(`${getManagerServiceUrl()}/admin/params`)
             .method('PUT')
             .data(data)
             .success((res) => {
@@ -120,9 +120,9 @@ export default {
     // 删除
     deleteParam(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/params/delete`)
+            .url(`${getManagerServiceUrl()}/admin/params/delete`)
             .method('POST')
-            .data(ids)
+            .data({ ids: ids })
             .success((res) => {
                 RequestService.clearRequestTime()
                 callback(res);

@@ -226,7 +226,7 @@ export default {
     fetchTemplateListForSort() {
       agentApi.getAgentTemplate((res) => {
         if (res && res.data && res.data.code === 0) {
-          const templateList = res.data.data || [];
+          const templateList = res.data.data.list || [];
           if (templateList.length > 0) {
             const maxSort = Math.max(...templateList.map(t => t.sort || 0));
             this.form.sort = maxSort + 1;

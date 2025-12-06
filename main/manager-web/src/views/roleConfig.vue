@@ -409,7 +409,7 @@ export default {
     fetchTemplates() {
       Api.agent.getAgentTemplate(({ data }) => {
         if (data.code === 0) {
-          this.templates = data.data;
+          this.templates = data.data.list;
         } else {
           this.$message.error(data.msg || i18n.t("roleConfig.fetchTemplatesFailed"));
         }
@@ -513,7 +513,7 @@ export default {
               this.$set(
                 this.modelOptions,
                 model.type,
-                data.data.map((item) => ({
+                data.data.list.map((item) => ({
                   value: item.id,
                   label: item.modelName,
                   isHidden: false,
@@ -556,7 +556,7 @@ export default {
       }
       Api.model.getModelVoices(modelId, "", ({ data }) => {
         if (data.code === 0 && data.data) {
-          this.voiceOptions = data.data.map((voice) => ({
+          this.voiceOptions = data.data.list.map((voice) => ({
             value: voice.id,
             label: voice.name,
             // 复制音频相关字段，确保hasAudioPreview能检测到
@@ -572,9 +572,7 @@ export default {
             // 保存训练状态字段，用于判断是否为克隆音频
             train_status: voice.trainStatus,
           }));
-          // 保存完整的音色信息，添加调试信息
-          console.log("获取到的音色数据:", data.data);
-          this.voiceDetails = data.data.reduce((acc, voice) => {
+          this.voiceDetails = data.data.list.reduce((acc, voice) => {
             acc[voice.id] = voice;
             return acc;
           }, {});
