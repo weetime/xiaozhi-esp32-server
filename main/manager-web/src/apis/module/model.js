@@ -310,7 +310,7 @@ export default {
     RequestService.sendRequest()
       .url(`${getManagerServiceUrl()}/models/provider/delete`)
       .method('POST')
-      .data(ids)
+      .data({ ids: ids })
       .success((res) => {
         RequestService.clearRequestTime()
         callback(res);

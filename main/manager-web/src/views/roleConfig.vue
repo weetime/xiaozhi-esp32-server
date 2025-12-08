@@ -532,7 +532,7 @@ export default {
           Api.model.getLlmModelCodeList("", ({ data }) => {
             if (data.code === 0) {
               let LLMdata = [];
-              data.data.forEach((item) => {
+              data.data.list.forEach((item) => {
                 LLMdata.push({
                   value: item.id,
                   label: item.modelName,
@@ -620,7 +620,7 @@ export default {
       return new Promise((resolve, reject) => {
         Api.model.getPluginFunctionList(null, ({ data }) => {
           if (data.code === 0) {
-            this.allFunctions = data.data.map((item) => {
+            this.allFunctions = data.data.list.map((item) => {
               const meta = JSON.parse(item.fields || "[]");
               const params = meta.reduce((m, f) => {
                 m[f.key] = f.default;

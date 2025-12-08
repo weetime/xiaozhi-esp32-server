@@ -290,7 +290,7 @@ export default {
     loadMcpAddress() {
       Api.agent.getAgentMcpAccessAddress(this.agentId, (res) => {
         if (res.data.code === 0) {
-          this.mcpUrl = res.data.data || "";
+          this.mcpUrl = res.data.data.data || "";
         } else {
           this.mcpUrl = "";
           console.error('获取MCP地址失败:', res.data.msg);
