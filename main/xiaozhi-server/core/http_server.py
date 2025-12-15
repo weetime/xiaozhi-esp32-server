@@ -45,9 +45,9 @@ class SimpleHttpServer:
                 # 如果没有开启智控台，只是单模块运行，就需要再添加简单OTA接口，用于下发websocket接口
                 app.add_routes(
                     [
-                        web.get("/xiaozhi/ota/", self.ota_handler.handle_get),
-                        web.post("/xiaozhi/ota/", self.ota_handler.handle_post),
-                        web.options("/xiaozhi/ota/", self.ota_handler.handle_post),
+                        web.get("/manager-api/ota", self.ota_handler.handle_get),
+                        web.post("/manager-api/ota", self.ota_handler.handle_post),
+                        web.options("/manager-api/ota", self.ota_handler.handle_post),
                     ]
                 )
             # 添加路由
