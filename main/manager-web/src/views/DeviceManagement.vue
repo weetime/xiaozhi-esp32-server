@@ -201,7 +201,7 @@ export default {
     async getFirmwareTypes() {
       try {
         const res = await Api.dict.getDictDataByType('FIRMWARE_TYPE')
-        this.firmwareTypes = res.data.list
+        this.firmwareTypes = res.data?.list || []
       } catch (error) {
         console.error(this.$t('device.getFirmwareTypeFailed') + ':', error)
         this.$message.error(error.message || this.$t('device.getFirmwareTypeFailed'))

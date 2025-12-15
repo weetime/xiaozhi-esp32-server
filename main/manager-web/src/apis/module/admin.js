@@ -12,7 +12,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/users?${queryParams}`)
+            .url(`${getManagerServiceUrl()}/admin/users?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -28,7 +28,7 @@ export default {
     // 删除用户
     deleteUser(id, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/users/${id}`)
+            .url(`${getManagerServiceUrl()}/admin/users/${id}`)
             .method('DELETE')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -44,7 +44,7 @@ export default {
     // 重置用户密码
     resetUserPassword(id, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/users/${id}`)
+            .url(`${getManagerServiceUrl()}/admin/users/${id}`)
             .method('PUT')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -137,7 +137,7 @@ export default {
     // 获取ws服务端列表
     getWsServerList(params, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/server/server-list`)
+            .url(`${getManagerServiceUrl()}/admin/server/server-list`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -153,7 +153,7 @@ export default {
     // 发送ws服务器动作指令
     sendWsServerAction(data, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/admin/server/emit-action`)
+            .url(`${getManagerServiceUrl()}/admin/server/emit-action`)
             .method('POST')
             .data(data)
             .success((res) => {

@@ -1,11 +1,11 @@
-import { getServiceUrl } from '../api';
+import { getManagerServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 export default {
     // 分页查询音色资源
     getVoiceCloneList(params, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/voiceClone`)
+            .url(`${getManagerServiceUrl()}/voiceClone`)
             .method('GET')
             .data(params)
             .success((res) => {
@@ -23,7 +23,7 @@ export default {
     // 上传音频文件
     uploadVoice(formData, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/voiceClone/upload`)
+            .url(`${getManagerServiceUrl()}/voiceClone/upload`)
             .method('POST')
             .data(formData)
             .success((res) => {
@@ -41,7 +41,7 @@ export default {
     // 更新音色名称
     updateName(params, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/voiceClone/updateName`)
+            .url(`${getManagerServiceUrl()}/voiceClone/updateName`)
             .method('POST')
             .data(params)
             .success((res) => {
@@ -59,7 +59,7 @@ export default {
     // 获取音频下载ID
     getAudioId(id, callback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/voiceClone/audio/${id}`)
+            .url(`${getManagerServiceUrl()}/voiceClone/audio/${id}`)
             .method('POST')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -75,13 +75,13 @@ export default {
 
     // 获取音频播放URL
     getPlayVoiceUrl(uuid) {
-        return `${getServiceUrl()}/voiceClone/play/${uuid}`;
+        return `${getManagerServiceUrl()}/voiceClone/play/${uuid}`;
     },
 
     // 复刻音频
     cloneAudio(params, callback, errorCallback) {
         RequestService.sendRequest()
-            .url(`${getServiceUrl()}/voiceClone/cloneAudio`)
+            .url(`${getManagerServiceUrl()}/voiceClone/cloneAudio`)
             .method('POST')
             .data(params)
             .success((res) => {

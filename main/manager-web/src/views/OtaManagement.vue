@@ -392,7 +392,7 @@ export default {
         async getFirmwareTypes() {
             try {
                 const res = await Api.dict.getDictDataByType('FIRMWARE_TYPE')
-                this.firmwareTypes = res.data
+                this.firmwareTypes = res.data?.list || []
             } catch (error) {
                 console.error('获取固件类型失败:', error)
                 this.$message.error(error.message || this.$t('otaManagement.getFirmwareTypesFailed'))

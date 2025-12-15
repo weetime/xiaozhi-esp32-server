@@ -342,7 +342,7 @@ export default {
   // 获取RAG模型列表
   getRAGModels(callback) {
     RequestService.sendRequest()
-      .url(`${getServiceUrl()}/datasets/rag-models`)
+      .url(`${getManagerServiceUrl()}/datasets/rag-models`)
       .method('GET')
       .success((res) => {
         RequestService.clearRequestTime()

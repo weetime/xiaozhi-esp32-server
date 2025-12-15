@@ -124,8 +124,8 @@ export default {
         ({ data }) => {
           this.loading = false;
           if (data.code === 0) {
-            this.paramsList = data.data.map(item => ({ address: item }));
-            this.total = data.data.length;
+            this.paramsList = data.data.list.map(item => ({ address: item }));
+            this.total = data.data.total;
           } else {
             this.$message.error({
               message: data.msg || this.$t('serverSideManager.getServerListFailed'),
