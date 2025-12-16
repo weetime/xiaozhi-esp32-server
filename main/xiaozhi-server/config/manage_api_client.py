@@ -149,7 +149,7 @@ class ManageApiClient:
 
 async def get_server_config() -> Optional[Dict]:
     """获取服务器基础配置"""
-    return await ManageApiClient._instance._execute_async_request("POST", "/config/server-base")
+    return await ManageApiClient._instance._execute_async_request("POST", "/config/server-base", json={})
 
 
 async def get_agent_models(

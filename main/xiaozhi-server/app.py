@@ -79,7 +79,7 @@ async def main():
     port = int(config["server"].get("http_port", 8003))
     if not read_config_from_api:
         logger.bind(tag=TAG).info(
-            "OTA接口是\t\thttp://{}:{}/manager-api/ota",
+            "OTA接口是\t\thttp://{}:{}/xiaozhi/ota",
             get_local_ip(),
             port,
         )
