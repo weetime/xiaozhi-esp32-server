@@ -1,4 +1,4 @@
-import { getServiceUrl, getManagerServiceUrl } from '../api';
+import { getServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 
@@ -6,7 +6,7 @@ export default {
     // 获取智能体列表
     getAgentList(callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/list`)
+            .url(`${getServiceUrl()}/agent/list`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -84,7 +84,7 @@ export default {
     // 新增方法：获取智能体模板
     getAgentTemplate(callback) {  // 移除templateName参数
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template`)
+            .url(`${getServiceUrl()}/agent/template`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -101,7 +101,7 @@ export default {
     // 新增：获取智能体模板分页列表
     getAgentTemplatesPage(params, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template/page`)
+            .url(`${getServiceUrl()}/agent/template/page`)
             .method('GET')
             .data(params)
             .success((res) => {
@@ -134,7 +134,7 @@ export default {
     // 获取智能体聊天记录
     getAgentChatHistory(agentId, sessionId, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/${agentId}/chat-history/${sessionId}`)
+            .url(`${getServiceUrl()}/agent/${agentId}/chat-history/${sessionId}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -164,7 +164,7 @@ export default {
     // 获取智能体的MCP接入点地址
     getAgentMcpAccessAddress(agentId, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/mcp/address/${agentId}`)
+            .url(`${getServiceUrl()}/agent/mcp/address/${agentId}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -179,7 +179,7 @@ export default {
     // 获取智能体的MCP工具列表
     getAgentMcpToolsList(agentId, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/mcp/tools/${agentId}`)
+            .url(`${getServiceUrl()}/agent/mcp/tools/${agentId}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -194,7 +194,7 @@ export default {
     // 添加智能体的声纹
     addAgentVoicePrint(voicePrintData, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/voice-print`)
+            .url(`${getServiceUrl()}/agent/voice-print`)
             .method('POST')
             .data(voicePrintData)
             .success((res) => {
@@ -210,7 +210,7 @@ export default {
     // 获取指定智能体声纹列表
     getAgentVoicePrintList(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/voice-print/list/${id}`)
+            .url(`${getServiceUrl()}/agent/voice-print/list/${id}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -225,7 +225,7 @@ export default {
     // 删除智能体声纹
     deleteAgentVoicePrint(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/voice-print/${id}`)
+            .url(`${getServiceUrl()}/agent/voice-print/${id}`)
             .method('DELETE')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -240,7 +240,7 @@ export default {
     // 更新智能体声纹
     updateAgentVoicePrint(voicePrintData, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/voice-print`)
+            .url(`${getServiceUrl()}/agent/voice-print`)
             .method('PUT')
             .data(voicePrintData)
             .success((res) => {
@@ -256,7 +256,7 @@ export default {
     // 获取指定智能体用户类型聊天记录
     getRecentlyFiftyByAgentId(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/${id}/chat-history/user`)
+            .url(`${getServiceUrl()}/agent/${id}/chat-history/user`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -271,7 +271,7 @@ export default {
     // 获取指定智能体用户类型聊天记录
     getContentByAudioId(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/${id}/chat-history/audio`)
+            .url(`${getServiceUrl()}/agent/${id}/chat-history/audio`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -287,7 +287,7 @@ export default {
     // 新增智能体模板
     addAgentTemplate(templateData, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template`)
+            .url(`${getServiceUrl()}/agent/template`)
             .method('POST')
             .data(templateData)
             .success((res) => {
@@ -304,7 +304,7 @@ export default {
     // 更新智能体模板
     updateAgentTemplate(templateData, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template`)
+            .url(`${getServiceUrl()}/agent/template`)
             .method('PUT')
             .data(templateData)
             .success((res) => {
@@ -321,7 +321,7 @@ export default {
     // 删除智能体模板
     deleteAgentTemplate(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template/${id}`)
+            .url(`${getServiceUrl()}/agent/template/${id}`)
             .method('DELETE')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -337,7 +337,7 @@ export default {
     // 批量删除智能体模板
     batchDeleteAgentTemplate(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template/batch-remove`) // 修改为新的URL
+            .url(`${getServiceUrl()}/agent/template/batch-remove`) // 修改为新的URL
             .method('POST')
             .data(Array.isArray(ids) ? { ids: ids } : { ids: [ids] }    ) // 确保是数组格式
             .success((res) => {
@@ -353,7 +353,7 @@ export default {
     // 在getAgentTemplate方法后添加获取单个模板的方法
     getAgentTemplateById(templateId, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/template/${templateId}`)
+            .url(`${getServiceUrl()}/agent/template/${templateId}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -370,7 +370,7 @@ export default {
     // 获取聊天记录下载链接UUID
     getDownloadUrl(agentId, sessionId, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/agent/chat-history/getDownloadUrl/${agentId}/${sessionId}`)
+            .url(`${getServiceUrl()}/agent/chat-history/getDownloadUrl/${agentId}/${sessionId}`)
             .method('POST')
             .success((res) => {
                 RequestService.clearRequestTime();

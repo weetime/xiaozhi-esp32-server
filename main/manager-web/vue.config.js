@@ -44,16 +44,12 @@ module.exports = defineConfig({
     port: 8001, // 指定端口为 8001
     proxy: {
       '/xiaozhi': {
-        target: 'http://127.0.0.1:8002',
-        changeOrigin: true
-      },
-      '/manager-api': {
         target: 'http://127.0.0.1:8010',
         changeOrigin: true,
         pathRewrite: {
-          '^/manager-api': ''
+          '^/xiaozhi': ''
         }
-      }
+      },
     },
     client: {
       overlay: false, // 不显示 webpack 错误覆盖层

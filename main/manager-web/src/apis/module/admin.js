@@ -1,4 +1,4 @@
-import { getServiceUrl, getManagerServiceUrl } from '../api';
+import { getServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 
@@ -12,7 +12,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/users?${queryParams}`)
+            .url(`${getServiceUrl()}/admin/users?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -28,7 +28,7 @@ export default {
     // 删除用户
     deleteUser(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/users/${id}`)
+            .url(`${getServiceUrl()}/admin/users/${id}`)
             .method('DELETE')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -44,7 +44,7 @@ export default {
     // 重置用户密码
     resetUserPassword(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/users/${id}`)
+            .url(`${getServiceUrl()}/admin/users/${id}`)
             .method('PUT')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -66,7 +66,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/params/page?${queryParams}`)
+            .url(`${getServiceUrl()}/admin/params/page?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -82,7 +82,7 @@ export default {
     // 保存
     addParam(data, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/params`)
+            .url(`${getServiceUrl()}/admin/params`)
             .method('POST')
             .data(data)
             .success((res) => {
@@ -99,7 +99,7 @@ export default {
     // 修改
     updateParam(data, callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/params`)
+            .url(`${getServiceUrl()}/admin/params`)
             .method('PUT')
             .data(data)
             .success((res) => {
@@ -120,7 +120,7 @@ export default {
     // 删除
     deleteParam(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/params/delete`)
+            .url(`${getServiceUrl()}/admin/params/delete`)
             .method('POST')
             .data({ ids: ids })
             .success((res) => {
@@ -137,7 +137,7 @@ export default {
     // 获取ws服务端列表
     getWsServerList(params, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/server/server-list`)
+            .url(`${getServiceUrl()}/admin/server/server-list`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -153,7 +153,7 @@ export default {
     // 发送ws服务器动作指令
     sendWsServerAction(data, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/server/emit-action`)
+            .url(`${getServiceUrl()}/admin/server/emit-action`)
             .method('POST')
             .data(data)
             .success((res) => {

@@ -126,7 +126,7 @@ export default {
    */
   updateKnowledgeBase(datasetId, data, callback, errorCallback) {
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}`,
+      url: `${getServiceUrl()}/datasets/${datasetId}`,
       method: 'PUT',
       data: data,
       headers: { 'Content-Type': 'application/json' },
@@ -145,7 +145,7 @@ export default {
    */
   deleteKnowledgeBase(datasetId, callback, errorCallback) {
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}`,
+      url: `${getServiceUrl()}/datasets/${datasetId}`,
       method: 'DELETE',
       callback: callback,
       errorCallback: errorCallback,
@@ -165,7 +165,7 @@ export default {
     const idsStr = Array.isArray(ids) ? ids.join(',') : ids;
 
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/batch?ids=${idsStr}`,
+      url: `${getServiceUrl()}/datasets/batch?ids=${idsStr}`,
       method: 'DELETE',
       callback: callback,
       errorCallback: errorCallback,
@@ -189,7 +189,7 @@ export default {
     }).toString();
 
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}/documents?${queryParams}`,
+      url: `${getServiceUrl()}/datasets/${datasetId}/documents?${queryParams}`,
       method: 'GET',
       callback: callback,
       errorCallback: errorCallback,
@@ -207,7 +207,7 @@ export default {
    */
   uploadDocument(datasetId, formData, callback, errorCallback) {
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}/documents`,
+      url: `${getServiceUrl()}/datasets/${datasetId}/documents`,
       method: 'POST',
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -231,7 +231,7 @@ export default {
     };
 
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}/chunks`,
+      url: `${getServiceUrl()}/datasets/${datasetId}/chunks`,
       method: 'POST',
       data: requestBody,
       headers: { 'Content-Type': 'application/json' },
@@ -251,7 +251,7 @@ export default {
    */
   deleteDocument(datasetId, documentId, callback, errorCallback) {
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}/documents/${documentId}`,
+      url: `${getServiceUrl()}/datasets/${datasetId}/documents/${documentId}`,
       method: 'DELETE',
       callback: callback,
       errorCallback: errorCallback,
@@ -280,7 +280,7 @@ export default {
     }
 
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}/documents/${documentId}/chunks?${queryParams}`,
+      url: `${getServiceUrl()}/datasets/${datasetId}/documents/${documentId}/chunks?${queryParams}`,
       method: 'GET',
       callback: callback,
       errorCallback: errorCallback,
@@ -298,7 +298,7 @@ export default {
    */
   retrievalTest(datasetId, data, callback, errorCallback) {
     makeApiRequest({
-      url: `${getManagerServiceUrl()}/datasets/${datasetId}/retrieval-test`,
+      url: `${getServiceUrl()}/datasets/${datasetId}/retrieval-test`,
       method: 'POST',
       data: data,
       headers: { 'Content-Type': 'application/json' },

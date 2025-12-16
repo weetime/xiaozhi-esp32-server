@@ -1,4 +1,4 @@
-import { getServiceUrl, getManagerServiceUrl } from '../api';
+import { getServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 export default {
@@ -12,7 +12,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/type/page?${queryParams}`)
+            .url(`${getServiceUrl()}/admin/dict/type/page?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -30,7 +30,7 @@ export default {
     // 获取字典类型详情
     getDictTypeDetail(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/type/${id}`)
+            .url(`${getServiceUrl()}/admin/dict/type/${id}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -48,7 +48,7 @@ export default {
     // 新增字典类型
     addDictType(data, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/type/save`)
+            .url(`${getServiceUrl()}/admin/dict/type/save`)
             .method('POST')
             .data(data)
             .success((res) => {
@@ -67,7 +67,7 @@ export default {
     // 更新字典类型
     updateDictType(data, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/type/update`)
+            .url(`${getServiceUrl()}/admin/dict/type/update`)
             .method('PUT')
             .data(data)
             .success((res) => {
@@ -86,7 +86,7 @@ export default {
     // 删除字典类型
     deleteDictType(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/type/delete`)
+            .url(`${getServiceUrl()}/admin/dict/type/delete`)
             .method('POST')
             .data(ids)
             .success((res) => {
@@ -113,7 +113,7 @@ export default {
         }).toString();
 
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/data/page?${queryParams}`)
+            .url(`${getServiceUrl()}/admin/dict/data/page?${queryParams}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -131,7 +131,7 @@ export default {
     // 获取字典数据详情
     getDictDataDetail(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/data/${id}`)
+            .url(`${getServiceUrl()}/admin/dict/data/${id}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -149,7 +149,7 @@ export default {
     // 新增字典数据
     addDictData(data, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/data/save`)
+            .url(`${getServiceUrl()}/admin/dict/data/save`)
             .method('POST')
             .data(data)
             .success((res) => {
@@ -168,7 +168,7 @@ export default {
     // 更新字典数据
     updateDictData(data, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/data/update`)
+            .url(`${getServiceUrl()}/admin/dict/data/update`)
             .method('PUT')
             .data(data)
             .success((res) => {
@@ -187,7 +187,7 @@ export default {
     // 删除字典数据
     deleteDictData(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/dict/data/delete`)
+            .url(`${getServiceUrl()}/admin/dict/data/delete`)
             .method('POST')
             .data({ids: ids})
             .success((res) => {
@@ -207,7 +207,7 @@ export default {
     getDictDataByType(dictType) {
         return new Promise((resolve, reject) => {
             RequestService.sendRequest()
-                .url(`${getManagerServiceUrl()}/admin/dict/data/type/${dictType}`)
+                .url(`${getServiceUrl()}/admin/dict/data/type/${dictType}`)
                 .method('GET')
                 .success((res) => {
                     RequestService.clearRequestTime()

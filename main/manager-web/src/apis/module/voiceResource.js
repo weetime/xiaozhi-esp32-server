@@ -1,11 +1,11 @@
-import { getManagerServiceUrl } from '../api';
+import { getServiceUrl } from '../api';
 import RequestService from '../httpRequest';
 
 export default {
     // 分页查询音色资源
     getVoiceResourceList(params, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/voiceResource`)
+            .url(`${getServiceUrl()}/voiceResource`)
             .method('GET')
             .data(params)
             .success((res) => {
@@ -22,7 +22,7 @@ export default {
     // 获取单个音色资源信息
     getVoiceResourceInfo(id, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/voiceResource/${id}`)
+            .url(`${getServiceUrl()}/voiceResource/${id}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -38,7 +38,7 @@ export default {
     // 保存音色资源
     saveVoiceResource(entity, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/voiceResource`)
+            .url(`${getServiceUrl()}/voiceResource`)
             .method('POST')
             .data(entity)
             .success((res) => {
@@ -55,7 +55,7 @@ export default {
     // 删除音色资源
     deleteVoiceResource(ids, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/voiceResource/${ids}`)
+            .url(`${getServiceUrl()}/voiceResource/${ids}`)
             .method('DELETE')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -71,7 +71,7 @@ export default {
     // 根据用户ID获取音色资源列表
     getVoiceResourceByUserId(userId, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/voiceResource/user/${userId}`)
+            .url(`${getServiceUrl()}/voiceResource/user/${userId}`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -87,7 +87,7 @@ export default {
     // 获取TTS平台列表
     getTtsPlatformList(callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/voiceResource/ttsPlatforms`)
+            .url(`${getServiceUrl()}/voiceResource/ttsPlatforms`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();

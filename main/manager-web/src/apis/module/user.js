@@ -1,4 +1,4 @@
-import { getServiceUrl, getManagerServiceUrl } from '../api'
+import { getServiceUrl } from '../api'
 import RequestService from '../httpRequest'
 
 
@@ -6,7 +6,7 @@ export default {
     // 登录
     login(loginForm, callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/login`)
+            .url(`${getServiceUrl()}/user/login`)
             .method('POST')
             .data(loginForm)
             .success((res) => {
@@ -26,7 +26,7 @@ export default {
     // 获取验证码
     getCaptcha(uuid, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/captcha?uuid=${uuid}`)
+            .url(`${getServiceUrl()}/user/captcha?uuid=${uuid}`)
             .method('GET')
             // .type('blob')
             .header({
@@ -45,7 +45,7 @@ export default {
     // 发送短信验证码
     sendSmsVerification(data, callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/smsVerification`)
+            .url(`${getServiceUrl()}/user/smsVerification`)
             .method('POST')
             .data(data)
             .success((res) => {
@@ -65,7 +65,7 @@ export default {
     // 注册账号
     register(registerForm, callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/register`)
+            .url(`${getServiceUrl()}/user/register`)
             .method('POST')
             .data(registerForm)
             .success((res) => {
@@ -85,7 +85,7 @@ export default {
     // 保存设备配置
     saveDeviceConfig(device_id, configData, callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/configDevice/${device_id}`)
+            .url(`${getServiceUrl()}/user/configDevice/${device_id}`)
             .method('PUT')
             .data(configData)
             .success((res) => {
@@ -102,7 +102,7 @@ export default {
     // 用户信息获取
     getUserInfo(callback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/info`)
+            .url(`${getServiceUrl()}/user/info`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime()
@@ -118,7 +118,7 @@ export default {
     // 修改用户密码
     changePassword(oldPassword, newPassword, successCallback, errorCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/change-password`)
+            .url(`${getServiceUrl()}/user/change-password`)
             .method('PUT')
             .data({
                 password: oldPassword,
@@ -139,7 +139,7 @@ export default {
     changeUserStatus(status, userIds, successCallback) {
         console.log(555, userIds)
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/admin/users/changeStatus/${status}`)
+            .url(`${getServiceUrl()}/admin/users/changeStatus/${status}`)
             .method('put')
             .data(userIds)
             .success((res) => {
@@ -156,7 +156,7 @@ export default {
     // 获取公共配置
     getPubConfig(callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/pub-config`)
+            .url(`${getServiceUrl()}/user/pub-config`)
             .method('GET')
             .success((res) => {
                 RequestService.clearRequestTime();
@@ -178,7 +178,7 @@ export default {
     // 找回用户密码
     retrievePassword(passwordData, callback, failCallback) {
         RequestService.sendRequest()
-            .url(`${getManagerServiceUrl()}/user/retrieve-password`)
+            .url(`${getServiceUrl()}/user/retrieve-password`)
             .method('PUT')
             .data({
                 phone: passwordData.phone,
