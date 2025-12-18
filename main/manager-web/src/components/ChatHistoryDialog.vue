@@ -208,7 +208,7 @@ export default {
             this.currentSessionId = session.sessionId;
             Api.agent.getAgentChatHistory(this.agentId, session.sessionId, (res) => {
                 if (res.data && res.data.data) {
-                    this.messages = res.data.data;
+                    this.messages = res.data.data.list;
                     if (this.messages.length > 0 && this.messages[0].macAddress) {
                         this.currentMacAddress = this.messages[0].macAddress;
                     }
@@ -277,7 +277,7 @@ export default {
             Api.agent.getAudioId(message.audioId, (res) => {
                 if (res.data && res.data.data) {
                     // 使用获取到的下载ID播放音频
-                    this.audioElement = new Audio(Api.getServiceUrl() + `/agent/play/${res.data.data}`);
+                    this.audioElement = new Audio(Api.getServiceUrl() + `/agent/play/${res.data.data.uuid}`);
 
                     this.audioElement.onended = () => {
                         this.playingAudioId = null;

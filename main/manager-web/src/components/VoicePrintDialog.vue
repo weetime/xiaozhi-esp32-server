@@ -123,7 +123,7 @@ export default {
       api.agent.getAudioId(audioId, (res) => {
         if (res.data && res.data.data) {
           // 使用获取到的下载ID播放音频
-          this.audioElement = new Audio(api.getServiceUrl() + `/agent/play/${res.data.data}`);
+          this.audioElement = new Audio(api.getServiceUrl() + `/agent/play/${res.data.data.uuid}`);
 
           this.audioElement.onended = () => {
             this.playingAudioId = null;
